@@ -1,3 +1,5 @@
+// Geolocate with OSM Nominatim
+
 import java.util.*;
 
 import java.net.URLEncoder;
