@@ -1,4 +1,4 @@
-// Geolocate with OSM Nominatim
+// Geolocate with Google Maps API
 
 import java.util.*;
 
@@ -86,15 +86,15 @@ void setup(){
 
 
 
-JSONArray geoLocate(String address){
-  String URL = "http://nominatim.openstreetmap.org/search.php?q=";
+String[] geoLocate(String address){
+  String URL = "http://maps.googleapis.com/maps/api/geocode/json"; 
   String encoded = null;
   try {
     encoded = URLEncoder.encode(address, "UTF-8");
   } catch (Exception e){
   }
   if(encoded != null){
-    JSONArray output = loadJSONArray(URL + encoded + "&format=json");
+    String[] output = loadStrings(URL + "?address=" + encoded +"&sensor=false");
     return output;
   } else {
     return null;
@@ -103,12 +103,17 @@ JSONArray geoLocate(String address){
 
 
 float[] getLocation(String address){
-  JSONArray res = geoLocate(address);
-  if(res != null && res.size() > 0){
+  String[] res = geoLocate(address);
+  if(res != null){
     float[] pos = new float[2];
-    JSONObject geoCode = res.getJSONObject(0);
-    pos[0] = geoCode.getFloat("lat");
-    pos[1] = geoCode.getFloat("lon");
+    for(int i=0; i<res.length; i++){
+      if(res[i].indexOf( "\"location\" : {" ) > 0){
+        String lat = res[i+1].trim().replaceAll("\"lat\" : ","").replaceAll(",","");
+        String lon = res[i+2].trim().replaceAll("\"lng\" : ","").replaceAll(",","");
+        pos[0] = Float.parseFloat(lat);
+        pos[1] = Float.parseFloat(lon);
+      }
+    }
     return pos;
   } else {
     return null;
