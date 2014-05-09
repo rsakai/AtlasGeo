@@ -39,7 +39,6 @@ Map<PVector,List<Map<String,Object>>> dots;
 
 
 String[] fields = {
-//  "Product Description",
   "Warrenty",
   "Break Down Servicing",
   "Planned Servicing",
@@ -100,6 +99,7 @@ void setup(){
     Histogram h = (Histogram) histograms.get(fieldName);
     h.setup(50, 100 * counter, 250, 50);
     counter++;
+    println(fieldName);
   }
 
  
