@@ -160,7 +160,7 @@ void setup(){
   
   
   // Init Colour Spectrum
-  color c1 = color(0,255,0);
+  color c1 = color(100,0,0);
   color c2 = color(255,0,0);
   colourRange = generateColourRange(c1,c2,10);
   

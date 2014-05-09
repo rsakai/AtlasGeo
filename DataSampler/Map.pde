@@ -18,9 +18,6 @@ class DraggableMap {
   int frameTracker = 0;
   
   DraggableMap(PApplet inApplet, Location inCentre, int inZoom){
-//    this.map = new InteractiveMap(inApplet, new Microsoft.AerialProvider());
-//    this.map.setCenterZoom(inCentre, inZoom);
-    
     String template = "http://c.tiles.mapbox.com/v3/examples.map-szwdot65/{Z}/{X}/{Y}.png";
     String[] subdomains = new String[] { "otile1", "otile2", "otile3", "otile4" };
     this.map = new InteractiveMap(inApplet, new TemplatedMapProvider(template, subdomains));

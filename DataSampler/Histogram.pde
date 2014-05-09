@@ -25,7 +25,7 @@ class Histogram{
   int color_background = 60;
   int color_bar_selected = 200;
   int color_bar_unselected = 100;
-  int color_text = 120;
+  int color_text = color(25,230,255);
   int color_handle = 255;
   int color_blue = color(102, 217, 239);
 
