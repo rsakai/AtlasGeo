@@ -1,6 +1,8 @@
 import java.util.*;
 
 
+// Added this line for test
+
 MongoDB m;
 String ipAddress = "127.0.0.1";
 String dbName = "atlas";
@@ -183,7 +185,7 @@ void draw(){
   }
   
   background(0);
-  tint(255, 255, 255, 130);
+//  tint(255, 255, 255, 130);
   map.draw();
   noTint();
   
