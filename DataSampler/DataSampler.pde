@@ -4,7 +4,7 @@ import java.util.*;
 // Added this line for test
 
 MongoDB m;
-String ipAddress = "134.58.106.9";//"127.0.0.1";
+String ipAddress = "127.0.0.1";
 String dbName = "atlas";
 String colName = "compressors";
 
