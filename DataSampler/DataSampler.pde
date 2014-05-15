@@ -4,7 +4,7 @@ import java.util.*;
 // Added this line for test
 
 MongoDB m;
-String ipAddress = "127.0.0.1";
+String ipAddress = "134.58.106.9";//"127.0.0.1";
 String dbName = "atlas";
 String colName = "compressors";
 
@@ -93,6 +93,7 @@ void setup(){
     
     Histogram histogram = new Histogram(keys, vals, isIntKey);
     histograms.put(fieldName, histogram);
+    histogram.name = fieldName;
   }
 
 
@@ -243,6 +244,10 @@ void mouseDragged(){
     // Histogram
     if(active != null){
       active.onDrag(mouseX);
+      // Wakeup mousemoved
+      sleepTracker = 0;
+      isUpdate = true;
+      loop();
     }
   }
 }

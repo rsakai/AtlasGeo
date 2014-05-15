@@ -5,6 +5,7 @@ class Histogram{
   List<String> keys;
   List<Integer> values;
   boolean isIntKey = false;
+  String name ="";
 
   int max_value = 0;
   int min_value = 0;
@@ -110,6 +111,9 @@ class Histogram{
       String label = keys.get(i);
       //rotating label if it is too long
       if(textWidth(label)+10 > bar_width){
+        if(label.length()>10){ 
+          label = label.substring(0,9)+"...";
+        }
         pushMatrix();
         translate(runningX, runningY);
         rotate(- HALF_PI/2);
@@ -135,6 +139,10 @@ class Histogram{
     textAlign(RIGHT, TOP);
     runningY -= rect.height;
     text(max_value, runningX, runningY);
+    //field name
+    textAlign(RIGHT, BOTTOM);
+    fill(color_background);
+    text(name, rect.x+rect.width, rect.y);
 
     //draw selected range
     stroke(color_handle);
@@ -183,7 +191,7 @@ class Histogram{
       // println("ind_start ="+index_start +"  index_end="+index_end);
     }else if(isRightSelected){
       handle_x_right = constrain(mx, handle_x_left, rect.x +rect.width);
-      index_end = constrain(round(map(mx, rect.x, rect.x+rect.width, 0, keys.size())), index_start, keys.size());
+      index_end = constrain(round(map(mx, rect.x, rect.x+rect.width, 0, keys.size())), index_start+1, keys.size());
       // println("ind_end ="+index_end);
     }else if(isMiddleSelected){
       //check the range
